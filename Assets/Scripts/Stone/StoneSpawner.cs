@@ -56,6 +56,10 @@ public class StoneSpawner : MonoBehaviour
     private void Spawn()
     {
         Stone stone = Instantiate(stonePrefab, spawnPoints[Random.Range(0,spawnPoints.Length)].position, Quaternion.identity);
+
+        SpriteRenderer stoneRenderer = stone.stoneSprite.GetComponent<SpriteRenderer>();
+        stoneRenderer.color = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value);
+
         stone.SetSize((Stone.Size)Random.Range(1,4));
         stone.maxHitPoints = Random.Range(stoneMinHitpoints, stoneMaxHitpoints + 1);
         amountSpawned++;

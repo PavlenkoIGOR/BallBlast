@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 [RequireComponent(typeof(StoneMovement))]
@@ -13,9 +12,13 @@ public class Stone : Destructable
     }
     [SerializeField] private Size size;
     [SerializeField] private float spawnUpForce;
+    [SerializeField] public Transform stoneSprite;
 
     private StoneMovement movement;
 
+    private Color stoneColor;
+
+    [SerializeField] private Coin newCoin;
     private void Awake()
     {
         movement = GetComponent<StoneMovement>();
@@ -34,9 +37,16 @@ public class Stone : Destructable
             SpawnStones();
         }
         Destroy(gameObject);
+
+        int coinSpawnRnd = Random.Range(1,4);
+        if (coinSpawnRnd == 2)
+        {
+            newCoin.CoinSpawner(this.transform.position); // spawn a coin
+        }
     }
     private void SpawnStones()
     {
+        stoneColor = new Color(Random.value, Random.value, Random.value);
         for (int i = 0; i < 2; i++)
         {
             Stone stone = Instantiate(this, transform.position, Quaternion.identity);
@@ -44,6 +54,9 @@ public class Stone : Destructable
             stone.maxHitPoints = Mathf.Clamp(maxHitPoints / 2, 1, maxHitPoints);
             stone.movement.AddVerticalVelocity(spawnUpForce);
             stone.movement.SetHorizontalDirection((i % 2 * 2) - 1);
+
+            SpriteRenderer sr = stone.stoneSprite.GetComponent<SpriteRenderer>();
+            sr.color = stoneColor;
         }
     }
 

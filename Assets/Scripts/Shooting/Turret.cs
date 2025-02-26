@@ -11,7 +11,7 @@ public class Turret : MonoBehaviour
     [SerializeField] private float projectileInterval;
 
     public int Damage => damage;
-    public sbyte ProjectileAmount => projectileAmount;
+    public sbyte ProjectileAmount { get { return projectileAmount; } }
     public float FireRate => fireRate;
 
     float timer;
@@ -50,5 +50,8 @@ public class Turret : MonoBehaviour
         }
     }
 
-
+    public void ChangeProjectilesAmount(sbyte amount)
+    {
+        projectileAmount += amount;
+    }
 }

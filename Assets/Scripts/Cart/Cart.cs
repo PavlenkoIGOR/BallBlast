@@ -8,13 +8,19 @@ public class Cart : MonoBehaviour
     [SerializeField] private float _vehicleWidth;
     private Vector3 _movementTarget;
 
-    [Header("Wheeels")]
-    [SerializeField] private Transform[] _wheels;    
+    [Header("Cart")]
+    [SerializeField] private Transform[] _wheels;
+    [SerializeField] private Transform _cartBody;
     private float _wheelRadius;
 
     [HideInInspector] public UnityEvent OnCollisionStone;
     private float _deltaMovement;
     private float _lastPosition;
+
+    #region public
+    public Transform[] wheelsPublic => _wheels;
+    public Transform cartBody => _cartBody;
+    #endregion
 
     private void Start()
     {
@@ -37,7 +43,7 @@ public class Cart : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Stone stone = collision.transform.root.GetComponent<Stone>();
-        Debug.Log("Cart - Collide with stone");
+
         if (stone != null)
         {
             OnCollisionStone.Invoke();

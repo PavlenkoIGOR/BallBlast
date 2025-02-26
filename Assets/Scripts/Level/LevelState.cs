@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -49,5 +48,16 @@ public class LevelState : MonoBehaviour
     private void OnCartCollisionStone()
     {
         Defeat.Invoke();
+
+        foreach (Transform wheel in cart.wheelsPublic)
+        {
+            Animation animation = wheel.GetComponent<Animation>();
+            animation.Play();
+        }
+        Animation animationBody = cart.cartBody.GetComponent<Animation>();
+        animationBody.Play();
+
+        PolygonCollider2D cartRB = cart.cartBody.GetComponent<PolygonCollider2D>();
+        cartRB.enabled = false;
     }
 }
