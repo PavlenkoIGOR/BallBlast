@@ -4,15 +4,21 @@ using UnityEngine.Events;
 public class LevelState : MonoBehaviour
 {
     [SerializeField] private StoneSpawner spawner;
+    public StoneSpawner Spawner { get { return spawner; } set { spawner = value; } }
     [SerializeField] private Cart cart;
     [Space(50)]
     public UnityEvent Passed;
     public UnityEvent Defeat;
 
     private float timer;
-    private bool checkPassed;
+    public bool checkPassed;
+    public bool isRestart = false;
     private void Awake()
     {
+        //PlayerPrefs.DeleteKey("SpawnerAmount");
+        //spawner.amount = PlayerPrefs.GetInt("SpawnerAmount", spawner.amount); // 0 - значение по умолчанию, если ключ не найден
+
+        //Debug.Log("bug");
         spawner.OnComplited.AddListener(OnSpawnCompleted);
         cart.OnCollisionStone.AddListener(OnCartCollisionStone);
     }
@@ -28,6 +34,7 @@ public class LevelState : MonoBehaviour
                 if (FindObjectsByType<Stone>(FindObjectsSortMode.None).Length == 0)
                 {
                     Passed.Invoke();
+                    //Debug.Log("bug");
                 }
             }
             timer = 0f;
@@ -36,6 +43,7 @@ public class LevelState : MonoBehaviour
     private void OnSpawnCompleted()
     {
         checkPassed = true;
+        //Debug.Log("bug");
     }
 
     private void OnDestroy()

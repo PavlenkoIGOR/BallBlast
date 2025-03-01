@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class UI_Keys : MonoBehaviour
 {
     [SerializeField] private Bag _bag;
-    [SerializeField] private Text _textKeys;
+    [SerializeField] private Text _textCoins;
 
     [SerializeField] private UnityEvent _onKeyPickup;
 
@@ -13,12 +13,12 @@ public class UI_Keys : MonoBehaviour
     {
 
     }
-    public void ChangeKeyUI()
-    {
-        if (_bag != null)
-        {
-            Debug.Log(_bag.GetAmount().ToString());
-            _textKeys.text = string.Format(_bag.GetAmount().ToString() + "/3");
-        }
-    }
+    //public void ChangeKeyUI()
+    //{
+    //    if (_bag != null)
+    //    {
+    //        Debug.Log(_bag.GetAmount().ToString());
+    //        _textCoins.text = string.Format(_bag.GetAmount().ToString() + "/3");
+    //    }
+    //}
 }

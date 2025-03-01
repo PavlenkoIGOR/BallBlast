@@ -11,11 +11,6 @@ public class LevelsController : MonoBehaviour
 {
     [SerializeField] private Levels levels;
 
-    private void Awake()
-    {
-
-    }
-
     public void ChangeScene()
     {
         Levels activeScene = (Levels)SceneManager.GetActiveScene().buildIndex;

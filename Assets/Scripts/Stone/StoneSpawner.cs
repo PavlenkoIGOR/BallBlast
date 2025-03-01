@@ -10,7 +10,7 @@ public class StoneSpawner : MonoBehaviour
     
 
     [Header("Balance")]
-    [SerializeField] private int amount;
+    [SerializeField] public int amount;
     [SerializeField] private Turret turret;
 
     [SerializeField][Range(0.0f, 1.0f)] private float minHitpointsPercentage;
@@ -22,8 +22,14 @@ public class StoneSpawner : MonoBehaviour
     private int stoneMaxHitpoints;
     private int stoneMinHitpoints;
     private float timer;
-    private int amountSpawned;
 
+    private int amountSpawned;
+    public int AmountSpawned { get { return amountSpawned; } set { amountSpawned = value; } }
+
+    private void Awake()
+    {
+
+    }
     void Start()
     {
         int damagePerSecond = (int)((turret.Damage * turret.ProjectileAmount) * (1 / turret.FireRate));
