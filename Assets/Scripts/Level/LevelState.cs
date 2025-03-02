@@ -13,6 +13,7 @@ public class LevelState : MonoBehaviour
     private float timer;
     public bool checkPassed;
     public bool isRestart = false;
+    public Cart Cart => cart;
     private void Awake()
     {
         //PlayerPrefs.DeleteKey("SpawnerAmount");

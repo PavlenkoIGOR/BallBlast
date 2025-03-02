@@ -30,6 +30,11 @@ public class StartNextLevel : MonoBehaviour
         levelNumber.onNextLevelpressed.Invoke();
         levelState.Spawner.enabled = true;
 
+        PolygonCollider2D cartRB = levelState.Cart.cartBody.GetComponent<PolygonCollider2D>();
+        cartRB.enabled = true;
+        CartControl cc = levelState.Cart.GetComponent<CartControl>();
+        cc.enabled = true;
+
         Debug.Log($"stones amount {levelState.Spawner.amount}");
     }
 }
