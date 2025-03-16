@@ -13,6 +13,7 @@ public class Turret : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
 
+
     public int Damage => damage;
     public sbyte ProjectileAmount { get { return projectileAmount; } }
     public float FireRate => fireRate;

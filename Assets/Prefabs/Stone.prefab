@@ -100,7 +100,7 @@ MonoBehaviour:
   onChangeHitPoints:
     m_PersistentCalls:
       m_Calls: []
-  audioSource: {fileID: 0}
+  onStoneCrush: {fileID: 835951419202539645, guid: 5b0cbf2bdf3ed8e4d97b7fabe6556252, type: 3}
   size: 3
   spawnUpForce: 1
   stoneSprite: {fileID: 1816601663805708233}

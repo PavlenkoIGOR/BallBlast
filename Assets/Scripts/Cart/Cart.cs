@@ -11,6 +11,7 @@ public class Cart : MonoBehaviour
     [Header("Cart")]
     [SerializeField] private Transform[] _wheels;
     [SerializeField] private Transform _cartBody;
+    [SerializeField] private AudioSource audioSourceCrushed;
     private float _wheelRadius;
 
     [HideInInspector] public UnityEvent OnCollisionStone;
@@ -47,6 +48,7 @@ public class Cart : MonoBehaviour
         if (stone != null)
         {
             OnCollisionStone.Invoke();
+            audioSourceCrushed.Play();
             //Debug.Log("Cart - Collide with stone");
         }
     }

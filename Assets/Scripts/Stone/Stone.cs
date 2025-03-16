@@ -3,6 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(StoneMovement))]
 public class Stone : Destructable
 {
+    [SerializeField] private GameObject onStoneCrush;
     public enum Size
     {
         Small,
@@ -29,6 +30,7 @@ public class Stone : Destructable
     private void OnDestroy()
     {
         onDie.RemoveListener(OnStoneDestroyed);
+
     }
     private void OnStoneDestroyed()
     {
@@ -36,9 +38,14 @@ public class Stone : Destructable
         {
             SpawnStones();
         }
+
+        var stoneCrush = Instantiate(onStoneCrush, transform.position, Quaternion.identity);
+        var sc = onStoneCrush.GetComponent<OnStoneCrush>();
+        //Destroy(stoneCrush, 1.5f);
+
         Destroy(gameObject);
 
-        int coinSpawnRnd = Random.Range(1,4);
+        int coinSpawnRnd = Random.Range(1, 4);
         if (coinSpawnRnd == 2)
         {
             newCoin.CoinSpawner(this.transform.position); // spawn a coin
@@ -75,7 +82,7 @@ public class Stone : Destructable
     {
         if (size == Size.Huge)
         {
-            return new Vector3(1,1,1);
+            return new Vector3(1, 1, 1);
         }
         if (size == Size.Big)
         {
