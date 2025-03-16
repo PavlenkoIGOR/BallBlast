@@ -6,7 +6,7 @@ public class BuyBttn : MonoBehaviour
     [SerializeField] private Bag bag;
     [SerializeField] private Turret turret;
     [SerializeField] private Button bttn;
-
+    [SerializeField] private int cost;
     [SerializeField] private SummaryBulletsTMP summaryBulletsTMP;
 
     private void Awake()
@@ -17,11 +17,11 @@ public class BuyBttn : MonoBehaviour
 
     private void ClickBuyBttn()
     {
-        if (bag.CoinsQ > 0)
+        if (bag.CoinsQ > 0 && bag.CoinsQ >= cost)
         {
             turret.ChangeProjectilesAmount(1);
 
-            bag.AddCoin(-1);
+            bag.AddCoin(-cost);
 
             summaryBulletsTMP.ChangeSummaryTMP();
         }

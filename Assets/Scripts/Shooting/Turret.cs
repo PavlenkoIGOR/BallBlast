@@ -10,6 +10,9 @@ public class Turret : MonoBehaviour
     [SerializeField][Range(1,20)] private sbyte projectileAmount;
     [SerializeField] private float projectileInterval;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+
     public int Damage => damage;
     public sbyte ProjectileAmount { get { return projectileAmount; } }
     public float FireRate => fireRate;
@@ -30,6 +33,8 @@ public class Turret : MonoBehaviour
     {
         if (timer > fireRate)
         {
+            audioSource.Play();
+
             SpawnProjectile();
             timer = 0;
         }

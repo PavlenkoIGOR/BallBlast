@@ -18,6 +18,7 @@ public class CartControl : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             turret.Fire();
+
         }
     }
 }
